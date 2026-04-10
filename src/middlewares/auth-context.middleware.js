@@ -54,13 +54,13 @@ module.exports = async (req, res, next) => {
 	try {
 		// Optional: if you want session to bypass bearer check, keep this block.
 		// If you want strict bearer-only checks, remove this block.
-		if (req.session?.auth?.nxstart_user_id) {
-			req.auth = {
-				subject: req.session.auth.nxstart_user_id,
-				raw: req.session.auth
-			};
-			return next();
-		}
+		// if (req.session?.auth?.nxstart_user_id) {
+		// 	req.auth = {
+		// 		subject: req.session.auth.nxstart_user_id,
+		// 		raw: req.session.auth
+		// 	};
+		// 	return next();
+		// }
 
 		const claims = await resolveClaims(req);
 		req.auth = mapNxstartClaims(claims);
